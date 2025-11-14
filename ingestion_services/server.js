@@ -8,7 +8,7 @@ const server = app.listen(PORT, () =>
   console.log(`Ingestion service listening on port ${PORT}`)
 );
 
-// graceful shutdown
+
 process.on("SIGINT", () => {
   console.log("Shutting down ingestion service...");
   server.close(() => process.exit(0));

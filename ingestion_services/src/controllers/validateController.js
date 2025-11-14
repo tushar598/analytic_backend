@@ -8,9 +8,9 @@ if (error)
   return res.status(400).json({ success: false, error: error.message });
 
 try {
-  // Push into Redis queue asynchronously; do not await DB writes
-  await eventProducer(value); // produces to queue (await quick put)
-  // Return success RIGHT AWAY
+
+  await eventProducer(value); 
+
   return res.status(202).json({ success: true });
 } catch (err) {
   console.error("Failed to enqueue event", err);

@@ -25,7 +25,7 @@ async function start() {
     async (job) => {
       try {
         const data = job.data;
-        // sanitize and parse timestamp
+   
         const doc = {
           site_id: data.site_id,
           event_type: data.event_type,
@@ -33,9 +33,9 @@ async function start() {
           user_id: data.user_id || null,
           timestamp: new Date(data.timestamp),
         };
-        // Insert into MongoDB
+       
         await Event.create(doc);
-        // completed automatically
+      
       } catch (err) {
         console.error("Error processing job", err);
         throw err;
@@ -49,7 +49,7 @@ async function start() {
     console.error("Job failed", jobId, failedReason)
   );
   qe.on("completed", ({ jobId }) => {
-    /* optionally log */
+
     console.log("Job completed", jobId);
   });
 
@@ -59,7 +59,7 @@ async function start() {
     `Worker started for queue "${queueName}" with concurrency ${concurrency}`
   );
 
-  // graceful shutdown
+
   process.on("SIGINT", async () => {
     console.log("Shutting down worker...");
     await worker.close();

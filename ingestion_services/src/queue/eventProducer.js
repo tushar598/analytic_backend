@@ -11,7 +11,7 @@ const queueName = process.env.QUEUE_NAME || "eventQueue";
 const queue = new Queue(queueName, { connection });
 
  export const eventProducer = async (event) => {
-  // small job options; short TTL
+
   await queue.add("ingest-event", event, {
     removeOnComplete: true,
     removeOnFail: true,
