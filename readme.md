@@ -220,7 +220,7 @@ Start processor (worker) first so queued jobs are consumed:
 
 ```bash
 cd processor_service
-node worker.js
+node start
 # or for dev:
 npm run dev
 ```
@@ -229,7 +229,7 @@ Start ingestion service:
 
 ```bash
 cd ../ingestion_service
-node server.js
+node start
 # or npm run dev
 ```
 
@@ -237,7 +237,7 @@ Start reporting service:
 
 ```bash
 cd ../reporting_service
-node server.js
+node start
 # or npm run dev
 ```
 
